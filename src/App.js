@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 //cmps
 import AppHeader from './components/ui/AppHeader/AppHeader';
-import HomePage from './containers/HomePage/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <div className="App">
         <AppHeader />
             <Switch>    
-              <Route path='/' component={HomePage} />
+              <Route exact path='/' component={HomePage} />
               <Route path='/favorites' component={()=>'favorites'} />
             </Switch>
       </div>

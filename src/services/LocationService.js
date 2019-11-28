@@ -8,6 +8,7 @@ function composeURL(serviceName) {
 }
 
 async function getLocationNameSuggestions(queryString) {
+  return queryString? temp : ''
    const url = BASE_URL+'autocomplete?apikey='+API_KEY+'&q='+queryString
    const res = await axios.get(url)
   return res.data

@@ -7,16 +7,33 @@
 body {
   margin: 0;
   font-family: "Rubik", sans-serif;
+  color: #323223;
 }
 
 button,
 input {
   outline: none;
   border: none;
+  font-size: 15px;
 }
 
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  color: blue;
+  text-decoration: none; /* no underline */
 }

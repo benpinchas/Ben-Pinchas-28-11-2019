@@ -1,10 +1,21 @@
 .app-header-cmp {
-   border-bottom: 1px solid;
+  border-bottom: 1px solid;
 
-   .content {
-      height: 50px;
+  .content {
+    height: 50px;
 
-      display: flex;
-      align-items: center;
-   }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav {
+    a {
+      padding: 5px;
+      border-radius: 4px;
+      &.active {
+        background-color: #eee;
+      }
+    }
+  }
 }

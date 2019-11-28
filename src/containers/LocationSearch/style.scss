@@ -1,6 +1,15 @@
 .location-search-cmp{
+   position: relative;
+
+
    input {
       width: 100%;
       padding: 10px;
+   }
+
+   .suggestion-list-cmp {
+      position: absolute;
+      width: 100%;
+      top: 120%;
    }
 }

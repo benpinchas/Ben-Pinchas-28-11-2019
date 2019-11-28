@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss'
 //store
-import { fetchLocationSuggestsAction } from '../../store/actions/locationActions'
+import { fetchLocationSuggestsAction, setSelectedLocationNameAction } from '../../store/actions/locationActions'
 import { connect } from 'react-redux'
 //cmps
 import SuggestionsList from '../../components/location/SuggestionsList/SuggestionsList';
@@ -13,10 +13,17 @@ const LocationSearch = (props) => {
       props.fetchLocationSuggests(queryString)
    }
 
+   function handleSuggestClick(details) {
+      props.setSelectedLocationDetails(details)
+   }
+
    return (
       <div className="location-search-cmp">
-         <input type="text" onChange={fetchLocationSuggests} />
-         <SuggestionsList suggestions={props.suggestions} />
+         <input type="text" onChange={fetchLocationSuggests} placeholder="Search for a place.." />
+         {
+            props.suggestions &&
+            <SuggestionsList suggestions={props.suggestions} onSuggestClick={handleSuggestClick} />
+         }
       </div>
    );
 }
@@ -27,9 +34,10 @@ const mapStateToProps = state => {
    }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
    return {
-      fetchLocationSuggests: (queryString) => dispatch(fetchLocationSuggestsAction(queryString))
+      fetchLocationSuggests: (queryString) => dispatch(fetchLocationSuggestsAction(queryString)),
+      setSelectedLocationDetails: (locationDetails) => dispatch(setSelectedLocationNameAction(locationDetails))
    }
 }
 
