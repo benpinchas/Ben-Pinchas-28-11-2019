@@ -1,5 +1,5 @@
 import {
-   FETCH_LOCATION_NAME_SUGGESTIONS
+   FETCH_LOCATION_SUGGESTS
 } from '../types'
 
 
@@ -12,7 +12,7 @@ const initState = {
 const locationReducer =  (state=initState, action) => {
 
    switch(action.type) {
-      case FETCH_LOCATION_NAME_SUGGESTIONS: 
+      case FETCH_LOCATION_SUGGESTS: 
       return {...state, locationSuggests: action.payload}
    }
 

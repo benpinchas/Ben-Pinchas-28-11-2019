@@ -1,11 +1,11 @@
 import React from 'react';
 import './style.scss'
-import LocationFilter from '../LocationFilter/LocationFilter';
+import LocationSearch from '../LocationSearch/LocationSearch';
 
 const HomePage = () => {
    return (
       <div className="container content">
-         <LocationFilter />
+         <LocationSearch />
       </div>
    );
 }

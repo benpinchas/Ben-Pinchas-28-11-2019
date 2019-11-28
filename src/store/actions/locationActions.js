@@ -2,15 +2,15 @@
 import LocationService from '../../services/LocationService'
 //types
 import {
-   FETCH_LOCATION_NAME_SUGGESTIONS,
+   FETCH_LOCATION_SUGGESTS,
    SET_SELECTED_LOCATION
 } from '../types'
 
-export function fetchLocationNameSuggestions(queryString) {
+export function fetchLocationSuggestsAction(queryString) {
    return async(dispatch) => {
       //get location name suggestion  //FIX
       let suggestions = await LocationService.getLocationNameSuggestions(queryString) || []
-      dispatch({ type: FETCH_LOCATION_NAME_SUGGESTIONS, payload: suggestions })
+      dispatch({ type: FETCH_LOCATION_SUGGESTS, payload: suggestions })
    }
 }
 
