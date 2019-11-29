@@ -22,22 +22,30 @@ export function setSelectedLocationAction(locationDetails) {
    }
 }
 
-async function fetchSelectedLocationCurrentWeatherAction(locationKey) {
-      const currentWeather = await LocationService.getLocationCurrentWeatherByKey(locationKey)
-}
-
-async function fetchSelectedLocationweekForcastAction(locationKey) {
-      const weekForcast = await LocationService.getLocationweekForcastByKey(locationKey)
-}
-
 export function fetchFavoriteLocationsAction() {
    return async (dispatch, getState) => {
       if (!getState().locationReducer.favorites) {
-         const favoriteLocations = await temp
+         const favoriteLocations = await temp //FIX get form service
          dispatch({ type: SET_FAVORITE_LOCATIONS, payload: favoriteLocations })
       }
    }
 }
+
+export function toggleLocationFromFavoritesAction(location) {
+   return  (dispatch, getState) => {
+      const favoritesCopy = getState().locationReducer.favorites.slice()
+      const idx = favoritesCopy.findIndex(_location => _location.Key === location.Key)
+      if (idx !== -1) {
+         favoritesCopy.splice(idx, 1)
+      }else {
+         favoritesCopy.push(location)
+      }
+      dispatch({ type: SET_FAVORITE_LOCATIONS, payload: favoritesCopy })
+      LocationService.saveFavoriteLocations(favoritesCopy)
+   }
+}
+
+
 
 
 

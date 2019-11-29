@@ -5,12 +5,13 @@ const BASE_URL = 'http://dataservice.accuweather.com/locations/v1/cities/'
 const API_KEY = 'nlHrBj3x0ff0f5uJ1hjANgFi9wGiHlWQ'
 const FAVORITE_LOCATIONS_STORAGE_KEY = 'FAVORITE_LOCATIONS'
 
+
 function getFavoriteLocations() {
     return StorageService.load(FAVORITE_LOCATIONS_STORAGE_KEY)
 }
 
-function saveToFavoriteLocations(locationDetails) {
-  return StorageService.save(FAVORITE_LOCATIONS_STORAGE_KEY, locationDetails)
+function saveFavoriteLocations(locationDetails) {
+  return StorageService.store(FAVORITE_LOCATIONS_STORAGE_KEY, locationDetails)
 }
 
 async function getLocationSuggests(queryString) {
@@ -220,9 +221,9 @@ export default  {
   getLocationCurrentWeatherByKey,
   getLocationweekForcastByKey,
   getFavoriteLocations,
-  saveToFavoriteLocations
+  saveFavoriteLocations
 }
-
+ 
 
 
 

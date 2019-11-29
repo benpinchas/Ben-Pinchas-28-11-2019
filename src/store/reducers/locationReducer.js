@@ -11,7 +11,7 @@ const initState = {
       "Key": "215854",
       "LocalizedName": "Tel Aviv"
    },
-   favorites: null //[{...}, {...}]
+   favorites: [] //[{...}, {...}]
 }
 
 

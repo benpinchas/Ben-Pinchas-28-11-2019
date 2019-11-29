@@ -4,6 +4,7 @@ import FavoritesContainer from '../../containers/FavoritesContainer/FavoritesCon
 const FavoritesPage = () => {
 return (
  <div className="favorites-page container content">
+    Favorite Locations
     <FavoritesContainer />
  </div>
  );

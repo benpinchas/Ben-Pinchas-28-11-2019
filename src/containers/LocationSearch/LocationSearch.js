@@ -12,11 +12,9 @@ class LocationSearch extends React.Component {
       term: ''
    }
 
-
-   setSelectedLocation = (locationDetails) => {
-      const { LocalizedName } = locationDetails
-      this.setState({ term: LocalizedName })
-      this.props.setSelectedLocation(locationDetails)
+   setSelectedLocation = (location) => {
+      this.setState({ term: location.LocalizedName })
+      this.props.setSelectedLocation(location)
    }
 
    onFocus = () => {
@@ -70,7 +68,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
    return {
       fetchLocationSuggests: (term) => dispatch(fetchLocationSuggestsAction(term)),
-      setSelectedLocation: (locationDetails) => dispatch(setSelectedLocationAction(locationDetails)) //FIX
+      setSelectedLocation: (location) => dispatch(setSelectedLocationAction(location)) 
    }
 }
 

@@ -12,7 +12,7 @@ import LocationList from './components/LocationList/LocationList';
 class FavoritesContainer extends Component {
 
    componentDidMount() {
-      this.props.fetchFavoriteLocations()
+      this.props.fetchFavoriteLocations() 
    }
 
    handleLocationClick = (location) => {
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      fetchFavoriteLocations: () => dispatch(fetchFavoriteLocationsAction()),
+      fetchFavoriteLocations: () => dispatch(fetchFavoriteLocationsAction()), 
       setSelectedLocation: (locationDetails) => dispatch(setSelectedLocationAction(locationDetails))
    }
 }
