@@ -1,7 +1,7 @@
 .container {
    max-width: 1100px;
    margin: 0 auto;
-   background-color: #ccc;
+   background-color: #eee;
 }
 
 .content {
@@ -15,3 +15,13 @@
 .column {
    flex-direction: column;
 }
+
+
+.floating-card {
+   height: 170px;
+   box-shadow: 0 0 2px 1px #cfcfcf;
+   background-color: #eee;
+   border-radius: var(--border-radius);
+}
+
+

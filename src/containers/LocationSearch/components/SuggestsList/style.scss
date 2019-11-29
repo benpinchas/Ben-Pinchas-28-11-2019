@@ -1,0 +1,16 @@
+.suggests-list-cmp {
+  background-color: #fff;
+  box-shadow: 0 0 4px 1px #c4c4c4;
+  max-height: 300px;
+  overflow-y: scroll;
+
+  .suggest-preview {
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+    padding: 1rem;
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}

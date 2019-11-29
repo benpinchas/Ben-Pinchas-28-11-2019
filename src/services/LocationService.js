@@ -1,13 +1,19 @@
 import axios from 'axios'
+import StorageService from './StorageService'
 
 const BASE_URL = 'http://dataservice.accuweather.com/locations/v1/cities/' 
 const API_KEY = 'nlHrBj3x0ff0f5uJ1hjANgFi9wGiHlWQ'
+const FAVORITE_LOCATIONS_STORAGE_KEY = 'FAVORITE_LOCATIONS'
 
-function composeURL(serviceName) {
-   return BASE_URL+serviceName+'?apikey='+API_KEY
+function getFavoriteLocations() {
+    return StorageService.load(FAVORITE_LOCATIONS_STORAGE_KEY)
 }
 
-async function getLocationNameSuggestions(queryString) {
+function saveToFavoriteLocations(locationDetails) {
+  return StorageService.save(FAVORITE_LOCATIONS_STORAGE_KEY, locationDetails)
+}
+
+async function getLocationSuggests(queryString) {
   return queryString? temp : ''
    const url = BASE_URL+'autocomplete?apikey='+API_KEY+'&q='+queryString
    const res = await axios.get(url)
@@ -15,9 +21,206 @@ async function getLocationNameSuggestions(queryString) {
 }     
 
 
+//FIX
+async function getLocationCurrentWeatherByKey(locationKey) {
+  return await [
+    {
+      "LocalObservationDateTime": "2019-11-28T21:31:00+02:00",
+      "EpochTime": 1574969460,
+      "WeatherText": "Cloudy",
+      "WeatherIcon": 7,
+      "HasPrecipitation": false,
+      "PrecipitationType": null,
+      "IsDayTime": false,
+      "Temperature": {
+        "Metric": {
+          "Value": 17.1,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Imperial": {
+          "Value": 63,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "MobileLink": "http://m.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us",
+      "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us"
+    }
+  ][0]
+}
+
+//FIX
+async function getLocationweekForcastByKey(locationKey) {
+    return await  [
+      {
+        "Date": "2019-11-29T07:00:00+02:00",
+        "EpochDate": 1575003600,
+        "Temperature": {
+          "Minimum": {
+            "Value": 13.1,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 23.7,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 1,
+          "IconPhrase": "Sunny",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 35,
+          "IconPhrase": "Partly cloudy",
+          "HasPrecipitation": false
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&unit=c&lang=en-us"
+      },
+      {
+        "Date": "2019-11-30T07:00:00+02:00",
+        "EpochDate": 1575090000,
+        "Temperature": {
+          "Minimum": {
+            "Value": 13.1,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 23.7,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 4,
+          "IconPhrase": "Intermittent clouds",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 33,
+          "IconPhrase": "Clear",
+          "HasPrecipitation": false
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&unit=c&lang=en-us"
+      },
+      {
+        "Date": "2019-12-01T07:00:00+02:00",
+        "EpochDate": 1575176400,
+        "Temperature": {
+          "Minimum": {
+            "Value": 14.6,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 23.2,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 2,
+          "IconPhrase": "Mostly sunny",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 39,
+          "IconPhrase": "Partly cloudy w/ showers",
+          "HasPrecipitation": true,
+          "PrecipitationType": "Rain",
+          "PrecipitationIntensity": "Heavy"
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&unit=c&lang=en-us"
+      },
+      {
+        "Date": "2019-12-02T07:00:00+02:00",
+        "EpochDate": 1575262800,
+        "Temperature": {
+          "Minimum": {
+            "Value": 13.4,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 23,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 3,
+          "IconPhrase": "Partly sunny",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 35,
+          "IconPhrase": "Partly cloudy",
+          "HasPrecipitation": false
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&unit=c&lang=en-us"
+      },
+      {
+        "Date": "2019-12-03T07:00:00+02:00",
+        "EpochDate": 1575349200,
+        "Temperature": {
+          "Minimum": {
+            "Value": 12.1,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 22.7,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "Day": {
+          "Icon": 3,
+          "IconPhrase": "Partly sunny",
+          "HasPrecipitation": false
+        },
+        "Night": {
+          "Icon": 34,
+          "IconPhrase": "Mostly clear",
+          "HasPrecipitation": false
+        },
+        "Sources": [
+          "AccuWeather"
+        ],
+        "MobileLink": "http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&unit=c&lang=en-us"
+      }
+    ]
+}
+
+
 
 export default  {
-   getLocationNameSuggestions
+  getLocationSuggests,
+  getLocationCurrentWeatherByKey,
+  getLocationweekForcastByKey,
+  getFavoriteLocations,
+  saveToFavoriteLocations
 }
 
 

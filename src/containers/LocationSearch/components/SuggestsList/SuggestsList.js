@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss'
-const SuggestionsList = ({ suggestions, onSuggestClick }) => {
+const SuggestsList = ({ suggestions, onSuggestClick }) => {
    const suggestionsToDisplay = suggestions.map(s => {
       return (
          <li
@@ -12,9 +12,9 @@ const SuggestionsList = ({ suggestions, onSuggestClick }) => {
       )
    })
    return (
-      <ul className="suggestion-list-cmp">
+      <ul className="suggests-list-cmp">
          {suggestionsToDisplay}
       </ul>
    );
 }
-export default SuggestionsList;
+export default SuggestsList;

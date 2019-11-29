@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 //cmps
-import AppHeader from './components/ui/AppHeader/AppHeader';
+import AppHeader from './components/layout/AppHeader/AppHeader';
 import HomePage from './pages/HomePage/HomePage';
+import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
+
 
 function App() {
   return (
@@ -11,7 +13,7 @@ function App() {
         <AppHeader />
             <Switch>    
               <Route exact path='/' component={HomePage} />
-              <Route path='/favorites' component={()=>'favorites'} />
+              <Route path='/favorites' component={FavoritesPage} />
             </Switch>
       </div>
     </BrowserRouter>
