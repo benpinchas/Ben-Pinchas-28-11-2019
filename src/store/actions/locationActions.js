@@ -16,10 +16,9 @@ export function fetchLocationSuggestsAction(queryString) {
 }
 
 
-export function setSelectedLocationNameAction(locationDetails) {
+export function setSelectedLocationAction(locationDetails) {
    return async (dispatch) => {
       dispatch({ type: SET_SELECTED_LOCATION, payload: locationDetails })
-      const locationKey = locationDetails.Key
    }
 }
 

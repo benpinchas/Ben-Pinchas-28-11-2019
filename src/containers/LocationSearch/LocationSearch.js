@@ -2,15 +2,9 @@ import React from 'react';
 import './style.scss'
 //store
 import { connect } from 'react-redux'
-import {
-   fetchLocationSuggestsAction,
-   setSelectedLocationNameAction,
-   fetchSelectedLocationCurrentWeatherAction,
-   fetchSelectedLocationweekForcastAction
-} from '../../store/actions/locationActions'
+import { setSelectedLocationAction, fetchLocationSuggestsAction } from '../../store/actions/locationActions'
 //cmps
 import SuggestionsList from './components/SuggestsList/SuggestsList';
-
 
 class LocationSearch extends React.Component {
    state = {
@@ -22,7 +16,7 @@ class LocationSearch extends React.Component {
    setSelectedLocation = (locationDetails) => {
       const { LocalizedName } = locationDetails
       this.setState({ term: LocalizedName })
-      this.props.setSelectedLocationDetails(locationDetails)
+      this.props.setSelectedLocation(locationDetails)
    }
 
    onFocus = () => {
@@ -76,7 +70,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
    return {
       fetchLocationSuggests: (term) => dispatch(fetchLocationSuggestsAction(term)),
-      setSelectedLocationDetails: (locationDetails) => dispatch(setSelectedLocationNameAction(locationDetails))
+      setSelectedLocation: (locationDetails) => dispatch(setSelectedLocationAction(locationDetails)) //FIX
    }
 }
 

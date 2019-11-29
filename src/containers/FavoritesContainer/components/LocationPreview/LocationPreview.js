@@ -20,11 +20,16 @@ class LocationPreview extends Component {
       this.setState({ temperature })
    }
 
+   handleClick = () => {
+      const {location} = this.props
+      this.props.onLocationClick(location)
+   }
+
    render() {
-      const { location } = this.props
+      const { location, onLocationClick } = this.props
       const { temperature } = this.state
       return (
-         <li className="location-preview-cmp floating-card">
+         <li className="location-preview-cmp floating-card" onClick={this.handleClick}>
             <span className="location-name">
                {location.LocalizedName}
             </span>
