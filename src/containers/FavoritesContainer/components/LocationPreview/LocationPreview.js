@@ -1,44 +1,63 @@
 import React, { Component } from 'react';
 import './style.scss'
+//store
+import {connect} from 'react-redux'
 //services
 import WeatherService from '../../../../services/WeatherService'
 
 
 class LocationPreview extends Component {
    state = {
-      temperature: null
+      currentWeather: null
    }
 
    componentDidMount() {
-      this.fetchTemperature()
+      this.fetchCurrentWeather()
    }
 
-   fetchTemperature = async () => {
+   fetchCurrentWeather = async () => {
       const locationKey = this.props.location.Key
-      const currentForcast = await WeatherService.getLocationCurrentWeatherByKey(locationKey)
-      const temperature = currentForcast.Temperature.Metric.Value
-      this.setState({ temperature })
+      const currentWeather = await WeatherService.getLocationCurrentWeatherByKey(locationKey)
+      this.setState({ currentWeather })
    }
 
    handleClick = () => {
-      const {location} = this.props
+      const { location } = this.props
       this.props.onLocationClick(location)
    }
 
    render() {
-      const { location, onLocationClick } = this.props
-      const { temperature } = this.state
+      const { location , temperatureUnit} = this.props
+      const { currentWeather } = this.state
+
+      let weatherIconSrc, temperature
+      if (currentWeather) {
+         temperature = temperatureUnit === 'C' ?
+            currentWeather.Temperature.Metric.Value + ' ° C' :
+            currentWeather.Temperature.Imperial.Value + ' ° F'
+         weatherIconSrc = WeatherService.getWeatherIconSrc(currentWeather.WeatherIcon)
+      }
       return (
          <li className="location-preview-cmp floating-card" onClick={this.handleClick}>
             <span className="location-name">
                {location.LocalizedName}
             </span>
-            <span> {temperature} </span>
+
+            <div className="icon-temperature-container">
+               <img src={weatherIconSrc} />
+               <span> {temperature} </span>
+            </div>
 
          </li>
       );
    }
 }
 
-export default LocationPreview;
+const mapStateToProps = (state) => {
+   return {
+      temperatureUnit: state.weatherReducer.unit
+   }
+}
+
+export default connect(mapStateToProps)(LocationPreview);
 

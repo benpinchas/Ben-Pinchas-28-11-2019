@@ -1,4 +1,4 @@
-export const weekForcast =  [
+export const weekForecast =  [
    {
      "Date": "2019-11-29T07:00:00+02:00",
      "EpochDate": 1575003600,

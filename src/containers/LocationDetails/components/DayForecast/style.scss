@@ -1,15 +1,11 @@
-.location-preview-cmp {
-  cursor: pointer;
-
-  text-align: center;
-
+.day-forecast-cmp {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 
-  &:hover {
-    background-color: #fff;
+  .day {
+    border-bottom: 1px solid #ccc;
   }
 
   .icon-temperature-container {
@@ -20,5 +16,6 @@
       width: 33px;
       margin-bottom: 15px;
     }
+
   }
 }

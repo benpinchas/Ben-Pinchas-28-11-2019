@@ -2,25 +2,56 @@
   .top {
     display: flex;
     justify-content: space-between;
-    background-color: #45a7ef;
+
+    background-color: #06bcfb;
+    background-image: linear-gradient(0deg, #06bcfb 0%, #4885eebd 74%);
+
+
     color: #fff;
+    margin-bottom: 10px; //FIX
+    height: 220px;
+
+    > * {
+      width: 33%;
+    }
 
     .name-temperature-container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      .temperature{
+      .temperature {
         padding-left: 5px;
       }
     }
+
+    .weather-icon-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      img {
+        margin-bottom: 10px;
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    .toggle-heart-cmp {
+      text-align: right;
+    }
   }
 
-  .weather-text {
+  .location-time-container {
+    //FIX
+    height: 170px;
     background-color: #fff;
-    font-size: 40px;
-
+    font-size: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
+    background-color: #537895;
+    background-image: linear-gradient(10deg, #09203f70 0%, #09203f 99%);
   }
 }

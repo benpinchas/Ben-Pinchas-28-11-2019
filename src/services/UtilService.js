@@ -4,6 +4,7 @@ function getDayInWeekByDate(date) {
    return days[dayIdx]
 }
 
+
 export default {
    getDayInWeekByDate
 }

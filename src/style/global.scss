@@ -1,10 +1,10 @@
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .content {
-  padding: 10px 15px;
+  padding: 15px;
 }
 
 .flex {
@@ -17,15 +17,12 @@
 
 .floating-card {
   background-color: #fff;
-  min-height: 150px;
+  border-radius: 2px;
+  height: 200px;
 }
 
-.mb {
-  margin-bottom: 10px;
-}
-
-.responsive-grid {
-  display: grid;
+.responsive-grid {   
+  display: grid;     
   grid-column-gap: 10px;
   row-gap: 10px;
   margin: 10px 0;

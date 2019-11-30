@@ -1,0 +1,11 @@
+.toggle-unit-cmp {
+   button {
+      opacity: 0.6;
+      background-color: unset;
+      color: #fff;
+      font-size: 19px;
+      &.active {
+         opacity: 1;
+      }
+   }
+}

@@ -3,6 +3,8 @@
   box-shadow: 0 0 4px 1px #c4c4c4;
   max-height: 300px;
   overflow-y: scroll;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
 
   .suggest-preview {
     cursor: pointer;

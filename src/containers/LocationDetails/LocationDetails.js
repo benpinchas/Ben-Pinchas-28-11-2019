@@ -4,7 +4,7 @@ import './style.scss'
 import { connect } from 'react-redux'
 import { toggleLocationFromFavoritesAction, fetchFavoriteLocationsAction } from '../../store/actions/locationActions'
 //cmps
-import WeekForcast from './components/WeekForcast/WeekForcast';
+import WeekForecast from './components/WeekForecast/WeekForecast';
 import ToggleHeart from '../../components/util/ToggleHeart/ToggleHeart';
 //services
 import WeatherService from '../../services/WeatherService'
@@ -12,21 +12,21 @@ import WeatherService from '../../services/WeatherService'
 class LocationDetails extends Component {
    state = {
       currentWeather: 'FETCHING',
-      weekForcast: []
+      weekForecast: []
    }
 
 
-   //---------------------------------
+   //--------------------------------- FIX
    componentDidMount() {
       this.fetchCurrentWeather()
-      this.fetchWeekForcast()
+      this.fetchWeekForecast()
       this.props.fetchFavoriteLocations()
    }
 
    componentDidUpdate(prevProps, prevState) {
       if (prevProps.selectedLocation !== this.props.selectedLocation) { // our selected location updated, fetch weather info
          this.fetchCurrentWeather()
-         this.fetchWeekForcast()
+         this.fetchWeekForecast()
       }
    }
 
@@ -38,10 +38,10 @@ class LocationDetails extends Component {
       this.setState({ currentWeather })
    }
 
-   fetchWeekForcast = async () => {
+   fetchWeekForecast = async () => {
       const locationKey = this.props.selectedLocation.Key
-      let weekForcast = await WeatherService.getLocationweekForcastByKey(locationKey)
-      this.setState({ weekForcast })
+      let weekForecast = await WeatherService.getLocationweekForecastByKey(locationKey)
+      this.setState({ weekForecast })
    }
 
    toggleLocationFromFavorites = () => {
@@ -49,41 +49,50 @@ class LocationDetails extends Component {
    }
 
    render() {
-      const { selectedLocation, favorites } = this.props
-      const { currentWeather, weekForcast } = this.state
+      const { selectedLocation, favorites, temperatureUnit } = this.props
+      const { currentWeather, weekForecast } = this.state
 
       const locationName = selectedLocation.LocalizedName
       const isOnFavorites = favorites.find(location => location.Key === selectedLocation.Key)
 
-      let temperature, weatherText
+      //FIX
+      let temperature, weatherText, weatherIconSrc
       if (currentWeather === 'FETCHING') {
          temperature = 'Loading..'
          weatherText = 'Loading..'
       } else {
-         temperature = currentWeather.Temperature.Metric.Value
+         temperature = temperatureUnit === 'C' ?
+            currentWeather.Temperature.Metric.Value + ' ° C' :
+            currentWeather.Temperature.Imperial.Value + ' ° F'
          weatherText = currentWeather.WeatherText
+         weatherIconSrc = WeatherService.getWeatherIconSrc(currentWeather.WeatherIcon) //FIX
       }
 
 
       return (
          <div className="location-details-cmp">
-            
+
             <div className="top content floating-card">
                <div className="name-temperature-container">
                   <h2>{locationName}</h2>
                   <h3 className="temperature"> {temperature} </h3>
                </div>
-               <div>
-                  <ToggleHeart onClick={this.toggleLocationFromFavorites} isChecked={isOnFavorites} />
+
+               <div className="weather-icon-text">
+                  <img src={weatherIconSrc} />
+                  {weatherText}
                </div>
+
+
+               <ToggleHeart onClick={this.toggleLocationFromFavorites} isChecked={isOnFavorites} />
             </div>
 
 
-            <h3 className="weather-text floating-card">
-               {weatherText}
-            </h3>
+            <div className="location-time-container floating-card">
+               <h3> 21:00 | Night</h3>
+            </div>
 
-            <WeekForcast weekForcast={weekForcast} />
+            <WeekForecast weekForecast={weekForecast} />
          </div>
       );
    }
@@ -92,7 +101,8 @@ class LocationDetails extends Component {
 const mapStateToProps = (state) => {
    return {
       selectedLocation: state.locationReducer.selectedLocation,
-      favorites: state.locationReducer.favorites
+      favorites: state.locationReducer.favorites,
+      temperatureUnit: state.weatherReducer.unit
    }
 }
 
