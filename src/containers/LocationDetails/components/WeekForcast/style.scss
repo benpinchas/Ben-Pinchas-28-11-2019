@@ -1,14 +1,2 @@
 .week-forcast-cmp {
-   display: grid;
-   grid-template-columns: 20% 20% 20% 20% 20%;
-   @media (max-width: 1000px) {
-     grid-template-columns: 25% 25% 25% 25%;
-   }
-   @media (max-width: 670px) {
-     grid-template-columns: 50% 50%;
-   }
-
-   .day-forcast-cmp {
-      margin: 10px;
-   }
 }

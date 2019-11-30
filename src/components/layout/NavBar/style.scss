@@ -1,9 +1,10 @@
 .nav-bar-cmp {
       a {
-        padding: 5px;
-        border-radius: 4px;
+        margin-left: 11px;
+        font-size: 19px;
+        padding-bottom: 3px;
         &.active {
-          background-color: #ccc;
+          border-bottom: 4px solid ;
         }
       }
 }

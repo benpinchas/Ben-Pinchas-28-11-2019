@@ -8,7 +8,7 @@ const locationListToDisplay = locations.map(location => <LocationPreview
       onLocationClick={onLocationClick}
       />)
 return (
- <ul className="location-list-cmp">
+ <ul className="location-list-cmp responsive-grid">
     {locationListToDisplay}
  </ul>
  );

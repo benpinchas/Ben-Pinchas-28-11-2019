@@ -26,9 +26,9 @@ class FavoritesContainer extends Component {
          'No locations..'
 
       return (
-         <div className="favorites-container">
+         <>
             {favoriteLocationsToDisplay}
-         </div>
+         </>
       );
    }
 }

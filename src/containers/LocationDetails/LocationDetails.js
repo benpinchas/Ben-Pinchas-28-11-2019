@@ -11,15 +11,26 @@ import WeatherService from '../../services/WeatherService'
 
 class LocationDetails extends Component {
    state = {
-      currentWeather: null,
+      currentWeather: 'FETCHING',
       weekForcast: []
    }
 
+
+   //---------------------------------
    componentDidMount() {
       this.fetchCurrentWeather()
       this.fetchWeekForcast()
       this.props.fetchFavoriteLocations()
    }
+
+   componentDidUpdate(prevProps, prevState) {
+      if (prevProps.selectedLocation !== this.props.selectedLocation) { // our selected location updated, fetch weather info
+         this.fetchCurrentWeather()
+         this.fetchWeekForcast()
+      }
+   }
+
+   //----------------------------------
 
    fetchCurrentWeather = async () => {
       const locationKey = this.props.selectedLocation.Key
@@ -38,29 +49,37 @@ class LocationDetails extends Component {
    }
 
    render() {
-      const { currentWeather, weekForcast } = this.state
       const { selectedLocation, favorites } = this.props
+      const { currentWeather, weekForcast } = this.state
+
       const locationName = selectedLocation.LocalizedName
-      const weatherText = currentWeather ? currentWeather.WeatherText : 'Loading..'
-      const temperature = currentWeather ? currentWeather.Temperature.Metric.Value : 'Loading..'
       const isOnFavorites = favorites.find(location => location.Key === selectedLocation.Key)
 
+      let temperature, weatherText
+      if (currentWeather === 'FETCHING') {
+         temperature = 'Loading..'
+         weatherText = 'Loading..'
+      } else {
+         temperature = currentWeather.Temperature.Metric.Value
+         weatherText = currentWeather.WeatherText
+      }
+
+
       return (
-         <div className="location-details-cmp content">
-            <div>
-               <div className="top content">
-                  <img className="location-thumbnail" src="https://media.timeout.com/images/105433594/630/472/image.jpg" />
-                  <div className="name-temperature-container">
-                     <h3>{locationName}</h3>
-                     <h3> {temperature} </h3>
-                  </div>
-                  <div>
-                     <ToggleHeart onClick={this.toggleLocationFromFavorites} isChecked={isOnFavorites} />
-                  </div>
+         <div className="location-details-cmp">
+            
+            <div className="top content floating-card">
+               <div className="name-temperature-container">
+                  <h2>{locationName}</h2>
+                  <h3 className="temperature"> {temperature} </h3>
+               </div>
+               <div>
+                  <ToggleHeart onClick={this.toggleLocationFromFavorites} isChecked={isOnFavorites} />
                </div>
             </div>
 
-            <h3 className="weather-text">
+
+            <h3 className="weather-text floating-card">
                {weatherText}
             </h3>
 
