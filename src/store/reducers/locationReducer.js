@@ -6,12 +6,12 @@ import {
 
 
 const initState = {
-   locationSuggests: null, // [{...}, {...}]
+   locationSuggests: null, 
    selectedLocation: {
       "Key": "215854",
       "LocalizedName": "Tel Aviv"
    },
-   favorites: [] //[{...}, {...}]
+   favorites: [] 
 }
 
 

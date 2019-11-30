@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import './style.scss'
 //store
 import { connect } from 'react-redux'
-import {toggleLocationFromFavoritesAction} from '../../store/actions/locationActions'
+import { toggleLocationFromFavoritesAction, fetchFavoriteLocationsAction } from '../../store/actions/locationActions'
 //cmps
 import WeekForcast from './components/WeekForcast/WeekForcast';
 import ToggleHeart from '../../components/util/ToggleHeart/ToggleHeart';
 //services
-import LocationService from '../../services/LocationService'
+import WeatherService from '../../services/WeatherService'
 
 class LocationDetails extends Component {
    state = {
@@ -18,17 +18,18 @@ class LocationDetails extends Component {
    componentDidMount() {
       this.fetchCurrentWeather()
       this.fetchWeekForcast()
+      this.props.fetchFavoriteLocations()
    }
 
    fetchCurrentWeather = async () => {
       const locationKey = this.props.selectedLocation.Key
-      const currentWeather = await LocationService.getLocationCurrentWeatherByKey(locationKey)
+      const currentWeather = await WeatherService.getLocationCurrentWeatherByKey(locationKey)
       this.setState({ currentWeather })
    }
 
    fetchWeekForcast = async () => {
       const locationKey = this.props.selectedLocation.Key
-      let weekForcast = await LocationService.getLocationweekForcastByKey(locationKey)
+      let weekForcast = await WeatherService.getLocationweekForcastByKey(locationKey)
       this.setState({ weekForcast })
    }
 
@@ -38,11 +39,11 @@ class LocationDetails extends Component {
 
    render() {
       const { currentWeather, weekForcast } = this.state
-      const {selectedLocation, favorites} = this.props
+      const { selectedLocation, favorites } = this.props
       const locationName = selectedLocation.LocalizedName
       const weatherText = currentWeather ? currentWeather.WeatherText : 'Loading..'
       const temperature = currentWeather ? currentWeather.Temperature.Metric.Value : 'Loading..'
-      const isOnFavorites = favorites? favorites.find(location => location.Key === selectedLocation.Key) : false
+      const isOnFavorites = favorites.find(location => location.Key === selectedLocation.Key)
 
       return (
          <div className="location-details-cmp content">
@@ -59,7 +60,7 @@ class LocationDetails extends Component {
                </div>
             </div>
 
-            <h3 className="weather-text-container">
+            <h3 className="weather-text">
                {weatherText}
             </h3>
 
@@ -78,7 +79,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      toggleLocationFromFavorites: (location) => dispatch(toggleLocationFromFavoritesAction(location))
+      toggleLocationFromFavorites: (location) => dispatch(toggleLocationFromFavoritesAction(location)),
+      fetchFavoriteLocations: () => dispatch(fetchFavoriteLocationsAction()),
    }
 }
 

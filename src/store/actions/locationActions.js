@@ -1,16 +1,15 @@
-//serivce
-import LocationService from '../../services/LocationService'
+//serivces
+import WeatherService from '../../services/WeatherService'
 //types
 import {
    SET_LOCATION_SUGGESTS,
    SET_SELECTED_LOCATION,
    SET_FAVORITE_LOCATIONS
 } from '../types'
-import { async } from 'q'
 
 export function fetchLocationSuggestsAction(queryString) {
    return async (dispatch) => {
-      let suggestions = await LocationService.getLocationSuggests(queryString)
+      let suggestions = await WeatherService.getLocationSuggests(queryString)
       dispatch({ type: SET_LOCATION_SUGGESTS, payload: suggestions })
    }
 }
@@ -24,8 +23,8 @@ export function setSelectedLocationAction(locationDetails) {
 
 export function fetchFavoriteLocationsAction() {
    return async (dispatch, getState) => {
-      if (!getState().locationReducer.favorites) {
-         const favoriteLocations = await temp //FIX get form service
+      if (!getState().locationReducer.favorites.length) {
+         const favoriteLocations = await WeatherService.getFavoriteLocations()
          dispatch({ type: SET_FAVORITE_LOCATIONS, payload: favoriteLocations })
       }
    }
@@ -41,62 +40,9 @@ export function toggleLocationFromFavoritesAction(location) {
          favoritesCopy.push(location)
       }
       dispatch({ type: SET_FAVORITE_LOCATIONS, payload: favoritesCopy })
-      LocationService.saveFavoriteLocations(favoritesCopy)
+      WeatherService.saveFavoriteLocations(favoritesCopy)
    }
 }
-
-
-
-
-
-
-let temp = [
-   {
-      "Version": 1,
-      "Key": "215854",
-      "Type": "City",
-      "Rank": 31,
-      "LocalizedName": "Tel Aviv",
-      "Country": {
-         "ID": "IL",
-         "LocalizedName": "Israel"
-      },
-      "AdministrativeArea": {
-         "ID": "TA",
-         "LocalizedName": "Tel Aviv"
-      }
-   },
-   {
-      "Version": 1,
-      "Key": "3431644",
-      "Type": "City",
-      "Rank": 45,
-      "LocalizedName": "Telanaipura",
-      "Country": {
-         "ID": "ID",
-         "LocalizedName": "Indonesia"
-      },
-      "AdministrativeArea": {
-         "ID": "JA",
-         "LocalizedName": "Jambi"
-      }
-   },
-   {
-      "Version": 1,
-      "Key": "300558",
-      "Type": "City",
-      "Rank": 45,
-      "LocalizedName": "Telok Blangah New Town",
-      "Country": {
-         "ID": "SG",
-         "LocalizedName": "Singapore"
-      },
-      "AdministrativeArea": {
-         "ID": "05",
-         "LocalizedName": "South West"
-      }
-   }
-]
 
 
 

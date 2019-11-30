@@ -1,5 +1,10 @@
 .day-forcast-cmp {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .day {
+    border-bottom: 1px solid;
+  }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss'
 //services
-import LocationService from '../../../../services/LocationService'
+import WeatherService from '../../../../services/WeatherService'
 
 
 class LocationPreview extends Component {
@@ -15,7 +15,7 @@ class LocationPreview extends Component {
 
    fetchTemperature = async () => {
       const locationKey = this.props.location.Key
-      const currentForcast = await LocationService.getLocationCurrentWeatherByKey(locationKey)
+      const currentForcast = await WeatherService.getLocationCurrentWeatherByKey(locationKey)
       const temperature = currentForcast.Temperature.Metric.Value
       this.setState({ temperature })
    }
