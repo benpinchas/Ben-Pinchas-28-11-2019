@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.scss'
 //store
 import { connect } from 'react-redux'
-import { toggleLocationFromFavoritesAction, fetchFavoriteLocationsAction } from '../../store/actions/locationActions'
+import { toggleLocationFromFavoritesAction } from '../../store/actions/locationActions'
 //cmps
 import WeekForecast from './components/WeekForecast/WeekForecast';
 import ToggleHeart from '../../components/util/ToggleHeart/ToggleHeart';
@@ -17,22 +17,19 @@ class LocationDetails extends Component {
    }
 
 
-   //--------------------------------- FIX
    componentDidMount() {
-      this.props.fetchFavoriteLocations()
       this.fetchCurrentWeather()
       this.fetchWeekForecast()
    }
 
    componentDidUpdate(prevProps, prevState) {
-      if (prevProps.selectedLocation !== this.props.selectedLocation) { // our selected location updated, fetch weather info
+      if (prevState && prevProps.selectedLocation !== this.props.selectedLocation) { // our selected location updated, fetch weather info
          this.fetchCurrentWeather()
          this.fetchWeekForecast()
       }
    }
 
-   //----------------------------------
-
+   
    fetchCurrentWeather = async () => {
       const locationKey = this.props.selectedLocation.Key
       try {
@@ -66,9 +63,9 @@ class LocationDetails extends Component {
       if (currentWeather === 'FETCHING') {
          temperature = 'Loading..'
          weatherText = 'Loading..'
-         weatherIconSrc = '/assets/loader.svg'
+         weatherIconSrc = 'https://svgshare.com/i/GVB.svg'
       } else if (currentWeather === 'ERROR') {
-         weatherIconSrc = '/assets/error.svg'
+         weatherIconSrc = 'https://svgshare.com/i/GV2.svg'
          weatherText = 'Please try later!'
       } else {
          temperature = temperatureUnit === 'C' ?
@@ -112,7 +109,7 @@ class LocationDetails extends Component {
                <div className="floating-card wind">
                   {windSpeed &&
                      <>
-                        <img src='/assets/windy.svg' />
+                        <img src='https://svgshare.com/i/GW2.svg' />
                         <h3>Wind</h3>
                         <span>{windSpeed}</span>
                      </>
@@ -137,7 +134,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
    return {
       toggleLocationFromFavorites: (location) => dispatch(toggleLocationFromFavoritesAction(location)),
-      fetchFavoriteLocations: () => dispatch(fetchFavoriteLocationsAction()),
    }
 }
 

@@ -1,4 +1,5 @@
 //serivces
+import LocationService from '../../services/LocationService'
 import WeatherService from '../../services/WeatherService'
 //types
 import {
@@ -24,7 +25,7 @@ export function setSelectedLocationAction(locationDetails) {
 export function fetchFavoriteLocationsAction() {
    return async (dispatch, getState) => {
       if (!getState().locationReducer.favorites.length) {
-         const favoriteLocations = await WeatherService.getFavoriteLocations()
+         const favoriteLocations = await LocationService.getFavoriteLocations()
          dispatch({ type: SET_FAVORITE_LOCATIONS, payload: favoriteLocations })
       }
    }
@@ -40,7 +41,7 @@ export function toggleLocationFromFavoritesAction(location) {
          favoritesCopy.push(location)
       }
       dispatch({ type: SET_FAVORITE_LOCATIONS, payload: favoritesCopy })
-      WeatherService.saveFavoriteLocations(favoritesCopy)
+      LocationService.saveFavoriteLocations(favoritesCopy)
    }
 }
 

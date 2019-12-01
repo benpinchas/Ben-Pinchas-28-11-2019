@@ -4,16 +4,13 @@ import './style.scss'
 import { withRouter } from 'react-router-dom'
 //store
 import { connect } from 'react-redux'
-import { fetchFavoriteLocationsAction, setSelectedLocationAction } from '../../store/actions/locationActions'
+import { setSelectedLocationAction } from '../../store/actions/locationActions'
 //cmps
 import LocationList from './components/LocationList/LocationList';
 
 
 class FavoritesContainer extends Component {
 
-   componentDidMount() {
-      this.props.fetchFavoriteLocations() 
-   }
 
    handleLocationClick = (location) => {
       this.props.setSelectedLocation(location)
@@ -41,7 +38,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      fetchFavoriteLocations: () => dispatch(fetchFavoriteLocationsAction()), 
       setSelectedLocation: (locationDetails) => dispatch(setSelectedLocationAction(locationDetails))
    }
 }
