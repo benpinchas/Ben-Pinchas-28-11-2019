@@ -8,6 +8,7 @@ import WeekForecast from './components/WeekForecast/WeekForecast';
 import ToggleHeart from '../../components/util/ToggleHeart/ToggleHeart';
 //services
 import WeatherService from '../../services/WeatherService'
+import UtilService from '../../services/UtilService'
 
 class LocationDetails extends Component {
    state = {
@@ -62,7 +63,7 @@ class LocationDetails extends Component {
       const isOnFavorites = favorites.find(location => location.Key === selectedLocation.Key)
 
       //FIX
-      let temperature, weatherText, weatherIconSrc, hour, timeContainerStyle
+      let temperature, weatherText, weatherIconSrc, hour, partOfDay, timeContainerStyle, windSpeed
       if (currentWeather === 'FETCHING') {
          temperature = 'Loading..'
          weatherText = 'Loading..'
@@ -75,7 +76,11 @@ class LocationDetails extends Component {
             currentWeather.Temperature.Metric.Value + ' ° C' :
             currentWeather.Temperature.Imperial.Value + ' ° F'
          weatherText = currentWeather.WeatherText
-         weatherIconSrc = WeatherService.getWeatherIconSrc(currentWeather.WeatherIcon) //FIX
+         weatherIconSrc = WeatherService.getWeatherIconSrc(currentWeather.WeatherIcon)
+         hour = UtilService.getFormattedHour(currentWeather.LocalObservationDateTime)
+         partOfDay = currentWeather.IsDayTime ? 'Day' : 'Night'
+         timeContainerStyle = { backgroundColor: currentWeather.IsDayTime ? 'lightblue' : '#214c6d' }
+         windSpeed = currentWeather.Wind.Speed.Metric.Value + 'Km/h'
       }
 
 
@@ -99,8 +104,21 @@ class LocationDetails extends Component {
 
 
             <div className="test-1">
-               <div className="floating-card"></div>
-               <div className="floating-card"></div>
+               <div className="floating-card location-time-container" style={timeContainerStyle}>
+                  {hour &&
+                     <h3>{ hour} | {partOfDay}</h3>
+                  }
+               </div>
+
+               <div className="floating-card wind">
+                  {windSpeed &&
+                     <>
+                        <img src='/assets/windy.svg' />
+                        <h3>Wind</h3>
+                        <span>{windSpeed}</span>
+                     </>
+                  }
+               </div>
             </div>
 
             <WeekForecast weekForecast={weekForecast} />

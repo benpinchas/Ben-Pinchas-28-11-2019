@@ -1,10 +1,9 @@
 import axios from 'axios'
 import StorageService from './StorageService'
 import * as FakeResponse from './FakeResponse'
-import { async } from 'q'
 
-const BASE_URL = 'http://dataservice.accuweather.com'
-const API_KEY = 'nlHrBj3x0ff0f5uJ1hjANgFi9wGiHlWQ'
+const BASE_URL = 'https://dataservice.accuweather.com'
+const API_KEY = 'zsGlW5LWHSfncy9Loq7xgypCDO1ShYbS'
 const FAVORITE_LOCATIONS_STORAGE_KEY = 'FAVORITE_LOCATIONS'
 
 
@@ -18,7 +17,7 @@ function saveFavoriteLocations(locationDetails) {
 
 //FIX
 async function getLocationSuggests(queryString) {
-  return FakeResponse.locationSuggests
+  // return FakeResponse.locationSuggests
   const url = BASE_URL + '/locations/v1/cities/autocomplete?apikey=' + API_KEY + '&q=' + queryString
   try {
     const res = await axios.get(url)
@@ -32,9 +31,8 @@ async function getLocationSuggests(queryString) {
 //FIX
 async function getLocationCurrentWeatherByKey(locationKey) {
   // throw new Error()
-  return FakeResponse.currWeather
-  const url = BASE_URL + '/currentconditions/v1/' + locationKey + '?apikey=' + API_KEY
-  const res = await axios.get(url)
+  // return FakeResponse.currWeatherLong
+  const url = BASE_URL + '/currentconditions/v1/' + locationKey + '?apikey=' + API_KEY + '&details=true'
   try {
     const res = await axios.get(url)
     return res.data[0]

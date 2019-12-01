@@ -52,20 +52,44 @@
     }
   }
 
-  // .location-time-container {
-  //   height: 170px;
-  //   background-color: #fff;
-  //   font-size: 30px;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   color: #fff;
+  .location-time-container {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
 
-    
-  //   background-image: url('/assets/night.jpg');
-  //   background-size: 100% 100%;
-  //   h3 {
-  //     font-weight: 300;
-  //   }
-  // }
+    background-color: lightblue;
+    // background-image: url('/assets/day.jpg');
+    background-size: 100% 100%;
+    h3 {
+      font-weight: 300;
+    }
+  }
+
+  @keyframes windy {
+    0%   {transform: scaleX(1);}
+    50%   {transform: scaleX(0.9);}
+    100%   {transform: scaleX(1);}
+  }
+
+  .wind {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+      animation: windy 3s infinite;
+      position: absolute;
+      opacity: 0.5;
+      height: 71%;
+      left: 3%;
+      bottom: 9%;
+      transform-origin: left;
+    }
+  }
+
 }

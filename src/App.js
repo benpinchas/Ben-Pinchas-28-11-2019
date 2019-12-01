@@ -11,8 +11,8 @@ import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className={'App'}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <div className='App'>
         <AppHeader />
             <Switch>    
               <Route exact path='/' component={HomePage} />
