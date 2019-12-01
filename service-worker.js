@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Ben-Pinchas-28-11-2019/precache-manifest.ef5e1d65a1d75e65ff70cf53ccc0a5d6.js"
+  "/Ben-Pinchas-28-11-2019/precache-manifest.b949678fbf380857366194be140d4ab8.js"
 );
 
 self.addEventListener('message', (event) => {
