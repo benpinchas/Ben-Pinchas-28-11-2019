@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5820c7662744896cf098582daa370777",
+    "revision": "95ca7ead68d5e0e59067d2b0a69cd3a1",
     "url": "/Ben-Pinchas-28-11-2019/index.html"
   },
   {
-    "revision": "1a3a6783c78048532a05",
+    "revision": "ef8ef964afa5e544eebd",
     "url": "/Ben-Pinchas-28-11-2019/static/css/main.3fe20392.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Ben-Pinchas-28-11-2019/static/js/2.85e6a8bf.chunk.js"
   },
   {
-    "revision": "1a3a6783c78048532a05",
-    "url": "/Ben-Pinchas-28-11-2019/static/js/main.55aefd4c.chunk.js"
+    "revision": "ef8ef964afa5e544eebd",
+    "url": "/Ben-Pinchas-28-11-2019/static/js/main.e50295ca.chunk.js"
   },
   {
     "revision": "cedd8e33bbb48631ef5f",
