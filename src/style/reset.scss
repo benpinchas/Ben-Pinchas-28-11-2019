@@ -7,7 +7,6 @@
 body {
   margin: 0;
   font-family: "Rubik", sans-serif;
-  color: #323223;
 }
 
 html, body {
@@ -17,6 +16,12 @@ html, body {
 
 button {
   cursor: pointer;
+  background-color: unset;
+  padding: unset;
+}
+
+input {
+  background-color: var(--bg-color-input);
 }
 
 button,
@@ -24,7 +29,10 @@ input {
   outline: none;
   border: none;
   font-size: 15px;
+  color: unset;
 }
+
+
 
 ul {
   list-style: none;

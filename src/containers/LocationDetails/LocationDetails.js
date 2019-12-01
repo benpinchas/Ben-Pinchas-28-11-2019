@@ -29,7 +29,7 @@ class LocationDetails extends Component {
       }
    }
 
-   
+
    fetchCurrentWeather = async () => {
       const locationKey = this.props.selectedLocation.Key
       try {
@@ -59,7 +59,7 @@ class LocationDetails extends Component {
       const locationName = selectedLocation.LocalizedName
       const isOnFavorites = favorites.find(location => location.Key === selectedLocation.Key)
 
-      let temperature, weatherText, weatherIconSrc, hour, partOfDay, timeContainerStyle, windSpeed
+      let temperature, weatherText, weatherIconSrc, hour, partOfDay, timeContainerClass, windSpeed
       if (currentWeather === 'FETCHING') {
          temperature = 'Loading..'
          weatherText = 'Loading..'
@@ -75,7 +75,7 @@ class LocationDetails extends Component {
          weatherIconSrc = WeatherService.getWeatherIconSrc(currentWeather.WeatherIcon)
          hour = UtilService.getFormattedHour(currentWeather.LocalObservationDateTime)
          partOfDay = currentWeather.IsDayTime ? 'Day' : 'Night'
-         timeContainerStyle = { backgroundColor: currentWeather.IsDayTime ? 'lightblue' : '#214c6d' }
+         timeContainerClass = currentWeather.IsDayTime ? '' : 'night' 
          windSpeed = currentWeather.Wind.Speed.Metric.Value + 'Km/h'
       }
 
@@ -100,9 +100,9 @@ class LocationDetails extends Component {
 
 
             <div className="test-1">
-               <div className="floating-card location-time-container" style={timeContainerStyle}>
+               <div className={"floating-card location-time-container " + timeContainerClass}>
                   {hour &&
-                     <h3>{ hour} | {partOfDay}</h3>
+                     <h3>{hour} | {partOfDay}</h3>
                   }
                </div>
 

@@ -16,9 +16,10 @@ function App(props) {
     props.fetchFavoriteLocations()
   }, [])
 
+
   return (
     <Router>
-      <div className='App'>
+      <div className='App' data-theme={props.theme}>
         <AppHeader />
         <Switch>
           <Route exact path='/' component={HomePage} />
@@ -29,10 +30,16 @@ function App(props) {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    theme: state.themeReducer
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchFavoriteLocations: () => dispatch(fetchFavoriteLocationsAction()),
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

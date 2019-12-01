@@ -1,0 +1,47 @@
+.App {
+  --color-soft: #eee;
+  --bg-color: #e4f3ff;
+  --text-color: #323232;
+  --text-color-soft: #ccc;
+  --text-color-mid: rgb(148, 148, 148);
+  --border-color-soft: #eee;
+  --bg-color-card: #fff;
+  --box-shadow: 0px 2px 4px 2px #94949478;
+  //input
+  --bg-color-input: #fff;
+  //weather-details
+  --bg-color-weather-details: #06bcfb;
+  --bg-image-weather-details: linear-gradient(0deg, #06bcfb 0%, #4885eebd 74%);
+  --text-color-weather-details: #fff;
+  --bg-color-day-weather-details: lightblue;
+  --bg-color-night-weather-details: rgb(33, 76, 109);
+  //header
+  --bg-color-header: #06bcfb;
+  --bg-image-header: linear-gradient(0deg, #06bcfb 0%, #4f81d8bd 74%);
+}
+
+.App[data-theme="dark"] {
+  --color-soft: rgb(68, 68, 68);
+  --bg-color: #6d6d6d;
+  --text-color: #fff;
+  --text-color-soft: #ccc;
+  --text-color-mid: rgb(148, 148, 148);
+  --box-shadow: 0px 2px 4px 2px #29292978;
+  //card
+  --bg-color-card: #333333;
+  //weather-details
+  --bg-color-weather-details: #0091aa;
+  --bg-image-weather-details: linear-gradient(0deg, rgb(0, 50, 89) ; 0%, #4885eebd 74%);
+  --bg-color-day-weather-details: #6aa1b3;
+  --bg-color-night-weather-details: rgb(0, 50, 89);
+  //header
+  --bg-color-header: #004d66;
+  --bg-image-header: linear-gradient(0deg, #005d7c 0%, #2567d8bd 74%);
+  //input
+  --bg-color-input: #333333;
+}
+
+* {
+  transition: background-color 0.7s;
+  transition-delay: 0;
+}

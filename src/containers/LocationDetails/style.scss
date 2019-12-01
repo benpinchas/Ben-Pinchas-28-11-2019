@@ -2,13 +2,12 @@
   .top {
     display: flex;
     justify-content: space-between;
-    
-    background-color: #06bcfb;
-    background-image: linear-gradient(0deg, #06bcfb 0%, #4885eebd 74%);
 
+    background-color: var(--bg-color-weather-details);
+    background-image: var(--bg-image-weather-details);
+    color: var(--text-color-weather-details);
 
-    color: #fff;
-    margin-bottom: var(--space); 
+    margin-bottom: var(--space);
     height: 220px;
 
     > * {
@@ -47,9 +46,9 @@
   .test-1 {
     display: grid;
     column-gap: var(--space);
-    row-gap:  var(--space);
+    row-gap: var(--space);
     grid-template-columns: 3fr 2fr;
-    @media (max-width:670px) {
+    @media (max-width: 670px) {
       grid-template-columns: 1fr;
     }
   }
@@ -61,18 +60,26 @@
     justify-content: center;
     color: #fff;
 
-    background-color: lightblue;
-    // background-image: url('/assets/day.jpg');
-    background-size: 100% 100%;
+    background-color: var(--bg-color-day-weather-details);
+    &.night {
+      background-color: var(--bg-color-night-weather-details);
+    }
+
     h3 {
       font-weight: 300;
     }
   }
 
   @keyframes windy {
-    0%   {transform: scaleX(1);}
-    50%   {transform: scaleX(0.9);}
-    100%   {transform: scaleX(1);}
+    0% {
+      transform: scaleX(1);
+    }
+    50% {
+      transform: scaleX(0.9);
+    }
+    100% {
+      transform: scaleX(1);
+    }
   }
 
   .wind {
@@ -86,12 +93,11 @@
     img {
       animation: windy 3s infinite;
       position: absolute;
-      opacity: 0.5;
+      opacity: 0.8;
       height: 71%;
       left: 3%;
       bottom: 9%;
       transform-origin: left;
     }
   }
-
 }

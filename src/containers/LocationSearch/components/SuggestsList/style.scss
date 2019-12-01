@@ -1,7 +1,8 @@
 .suggests-list-cmp {
   z-index: 1;
-  background-color: #fff;
-  box-shadow:0px 2px 4px 2px #94949478;
+  // background-color: #fff;
+  background-color: var(--bg-color-card);
+  box-shadow: var(--box-shadow);
   max-height: 300px;
   overflow-y: scroll;
   border-bottom-left-radius: 9px;
@@ -9,15 +10,16 @@
 
   .suggest-preview {
     cursor: pointer;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color-soft);
     font-size: 15px;
     padding: 1rem;
+    transition: background-color 0s;
     &:hover {
-      background-color: #eee;
+      background-color: var(--color-soft);
     }
 
     .country {
-      color: rgb(146, 146, 146);
+      color: var(--text-color-mid);
       font-weight: 300;
       margin-left: 3px;
       font-size: 14px;
