@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 //store
 import {connect} from 'react-redux'
 //cmps
@@ -11,7 +11,7 @@ import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <Router>
       <div className='App'>
         <AppHeader />
             <Switch>    
@@ -19,7 +19,7 @@ function App() {
               <Route path='/favorites' component={FavoritesPage} />
             </Switch>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 

@@ -19,9 +19,9 @@ class LocationDetails extends Component {
 
    //--------------------------------- FIX
    componentDidMount() {
+      this.props.fetchFavoriteLocations()
       this.fetchCurrentWeather()
       this.fetchWeekForecast()
-      this.props.fetchFavoriteLocations()
    }
 
    componentDidUpdate(prevProps, prevState) {
@@ -62,7 +62,6 @@ class LocationDetails extends Component {
       const locationName = selectedLocation.LocalizedName
       const isOnFavorites = favorites.find(location => location.Key === selectedLocation.Key)
 
-      //FIX
       let temperature, weatherText, weatherIconSrc, hour, partOfDay, timeContainerStyle, windSpeed
       if (currentWeather === 'FETCHING') {
          temperature = 'Loading..'

@@ -30,7 +30,6 @@ async function getLocationSuggests(queryString) {
 
 //FIX
 async function getLocationCurrentWeatherByKey(locationKey) {
-  // throw new Error()
   // return FakeResponse.currWeatherLong
   const url = BASE_URL + '/currentconditions/v1/' + locationKey + '?apikey=' + API_KEY + '&details=true'
   try {

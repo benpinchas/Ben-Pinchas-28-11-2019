@@ -5,7 +5,6 @@ function getDayInWeekByDate(date) {
 }
 
 function getFormattedHour(dateStr) {
-   console.log(dateStr)
    const localOffset = new Date(Date.now()).getTimezoneOffset() * 60000
    const utcTimestamp = Date.now() + localOffset
    const cityOffset = +(dateStr.slice(19,22)) * 60000 * 60
@@ -13,7 +12,6 @@ function getFormattedHour(dateStr) {
    const date = new Date(utcTimestamp + cityOffset)
    const hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
    const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
-   console.log(hour + ':' + minutes)
    return  hour +':'+ minutes
 }
 
