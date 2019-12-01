@@ -20,29 +20,46 @@ function saveFavoriteLocations(locationDetails) {
 async function getLocationSuggests(queryString) {
   return FakeResponse.locationSuggests
   const url = BASE_URL + '/locations/v1/cities/autocomplete?apikey=' + API_KEY + '&q=' + queryString
-  const res = await axios.get(url)
-  return res.data
+  try {
+    const res = await axios.get(url)
+    return res.data
+  } catch (err) {
+    throw err
+  }
 }
 
 
 //FIX
 async function getLocationCurrentWeatherByKey(locationKey) {
+  // throw new Error()
   return FakeResponse.currWeather
   const url = BASE_URL + '/currentconditions/v1/' + locationKey + '?apikey=' + API_KEY
   const res = await axios.get(url)
-  console.log(res)
-  return res.data[0]
+  try {
+    const res = await axios.get(url)
+    return res.data[0]
+  } catch (err) {
+    throw err
+  }
+
 }
 
 //FIX
 async function getLocationweekForecastByKey(locationKey) {
   console.log('FETCHING WEEK FORCAST FOR ', locationKey)
   return await FakeResponse.weekForecast
+  const url = ''
+  try {
+    const res = await axios.get(url)
+    return res.data
+  } catch (err) {
+    throw err
+  }
 }
 
 
 function convertCelsiusToFahrenheit(degrees) {
-  return  Math.floor(degrees * 1.8 + 32)
+  return Math.floor(degrees * 1.8 + 32)
 }
 
 function getWeatherIconSrc(iconNumber) {

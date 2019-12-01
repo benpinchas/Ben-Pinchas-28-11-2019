@@ -34,8 +34,14 @@ class LocationDetails extends Component {
 
    fetchCurrentWeather = async () => {
       const locationKey = this.props.selectedLocation.Key
-      const currentWeather = await WeatherService.getLocationCurrentWeatherByKey(locationKey)
-      this.setState({ currentWeather })
+      try {
+         const currentWeather = await WeatherService.getLocationCurrentWeatherByKey(locationKey)
+         this.setState({ currentWeather })
+      } catch (err) {
+         this.setState({ currentWeather: 'ERROR' })
+      }
+
+
    }
 
    fetchWeekForecast = async () => {
@@ -56,10 +62,14 @@ class LocationDetails extends Component {
       const isOnFavorites = favorites.find(location => location.Key === selectedLocation.Key)
 
       //FIX
-      let temperature, weatherText, weatherIconSrc
+      let temperature, weatherText, weatherIconSrc, hour, timeContainerStyle
       if (currentWeather === 'FETCHING') {
          temperature = 'Loading..'
          weatherText = 'Loading..'
+         weatherIconSrc = '/assets/loader.svg'
+      } else if (currentWeather === 'ERROR') {
+         weatherIconSrc = '/assets/error.svg'
+         weatherText = 'Please try later!'
       } else {
          temperature = temperatureUnit === 'C' ?
             currentWeather.Temperature.Metric.Value + ' ° C' :
@@ -88,8 +98,9 @@ class LocationDetails extends Component {
             </div>
 
 
-            <div className="location-time-container floating-card">
-               <h3> 21:00 | Night</h3>
+            <div className="test-1">
+               <div className="floating-card"></div>
+               <div className="floating-card"></div>
             </div>
 
             <WeekForecast weekForecast={weekForecast} />

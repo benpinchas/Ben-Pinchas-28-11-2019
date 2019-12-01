@@ -2,7 +2,7 @@
   .top {
     display: flex;
     justify-content: space-between;
-
+    
     background-color: #06bcfb;
     background-image: linear-gradient(0deg, #06bcfb 0%, #4885eebd 74%);
 
@@ -42,16 +42,30 @@
     }
   }
 
-  .location-time-container {
-    //FIX
-    height: 170px;
-    background-color: #fff;
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background-color: #537895;
-    background-image: linear-gradient(10deg, #09203f70 0%, #09203f 99%);
+  .test-1 {
+    display: grid;
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-columns: 3fr 2fr;
+    @media (max-width:670px) {
+      grid-template-columns: 1fr;
+    }
   }
+
+  // .location-time-container {
+  //   height: 170px;
+  //   background-color: #fff;
+  //   font-size: 30px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   color: #fff;
+
+    
+  //   background-image: url('/assets/night.jpg');
+  //   background-size: 100% 100%;
+  //   h3 {
+  //     font-weight: 300;
+  //   }
+  // }
 }

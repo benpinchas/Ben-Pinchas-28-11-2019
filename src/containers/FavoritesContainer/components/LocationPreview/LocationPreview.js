@@ -29,9 +29,9 @@ class LocationPreview extends Component {
    render() {
       const { location , temperatureUnit} = this.props
       const { currentWeather } = this.state
-
+     
       let weatherIconSrc, temperature
-      if (currentWeather) {
+      if (currentWeather) { //FIX loading/error
          temperature = temperatureUnit === 'C' ?
             currentWeather.Temperature.Metric.Value + ' ° C' :
             currentWeather.Temperature.Imperial.Value + ' ° F'
