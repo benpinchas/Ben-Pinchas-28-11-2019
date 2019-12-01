@@ -5,8 +5,8 @@ const ToggleHeart = ({isChecked, onClick}) => {
       color: isChecked? 'tomato' : '#ccc'
    } 
    return (
-      <span className="toggle-heart-cmp active" style={styleObj} onClick={onClick}>
-         <i className="fas fa-heart"></i>
+      <span className="toggle-heart-cmp active" style={styleObj}>
+         <i className="fas fa-heart" onClick={onClick}></i>
       </span>
    );
 }

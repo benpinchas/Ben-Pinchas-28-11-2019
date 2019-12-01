@@ -10,8 +10,12 @@ import {
 
 export function fetchLocationSuggestsAction(queryString) {
    return async (dispatch) => {
-      let suggestions = await WeatherService.getLocationSuggests(queryString)
-      dispatch({ type: SET_LOCATION_SUGGESTS, payload: suggestions })
+      try {
+         let suggestions = await WeatherService.getLocationSuggests(queryString)
+         dispatch({ type: SET_LOCATION_SUGGESTS, payload: suggestions })
+      }catch(err) {
+        throw err
+      }
    }
 }
 
@@ -32,12 +36,12 @@ export function fetchFavoriteLocationsAction() {
 }
 
 export function toggleLocationFromFavoritesAction(location) {
-   return  (dispatch, getState) => {
+   return (dispatch, getState) => {
       const favoritesCopy = getState().locationReducer.favorites.slice()
       const idx = favoritesCopy.findIndex(_location => _location.Key === location.Key)
       if (idx !== -1) {
          favoritesCopy.splice(idx, 1)
-      }else {
+      } else {
          favoritesCopy.push(location)
       }
       dispatch({ type: SET_FAVORITE_LOCATIONS, payload: favoritesCopy })

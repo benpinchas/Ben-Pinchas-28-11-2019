@@ -22,17 +22,16 @@ class LocationSearch extends React.Component {
    }
 
    onBlur = () => {
-      setTimeout(() => //FIX
-         this.setState({ ...this.state, isFocus: false })
-         , 100)
-
+      this.setState({ ...this.state, isFocus: false })
    }
+
 
    onInputChange = (ev) => {
       const term = ev.target.value
       this.setState(
          (state) => ({ ...state, term: term }),
          () => this.props.fetchLocationSuggests(term)
+            .catch((err) => alert('Please try later..'))
       )
    }
 
@@ -68,7 +67,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
    return {
       fetchLocationSuggests: (term) => dispatch(fetchLocationSuggestsAction(term)),
-      setSelectedLocation: (location) => dispatch(setSelectedLocationAction(location)) 
+      setSelectedLocation: (location) => dispatch(setSelectedLocationAction(location))
    }
 }
 

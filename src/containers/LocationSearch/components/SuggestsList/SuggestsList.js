@@ -6,7 +6,7 @@ const SuggestsList = ({ suggestions, onSuggestClick }) => {
          <li
             className="suggest-preview"
             key={s.Key}
-            onClick={onSuggestClick.bind(null, s)}>
+            onMouseDown={onSuggestClick.bind(null, s)}>
             <span>{s.LocalizedName}</span> <span className="country">{s.Country.LocalizedName}</span>
          </li>
       )

@@ -10,7 +10,7 @@ const API_KEY = 'zsGlW5LWHSfncy9Loq7xgypCDO1ShYbS'
 
 
 async function getLocationSuggests(queryString) {
-  // return FakeResponse.locationSuggests
+  return FakeResponse.locationSuggests
   const url = BASE_URL + '/locations/v1/cities/autocomplete?apikey=' + API_KEY + '&q=' + queryString
   try {
     const res = await axios.get(url)
@@ -22,7 +22,8 @@ async function getLocationSuggests(queryString) {
 
 
 async function getLocationCurrentWeatherByKey(locationKey) {
-  // return FakeResponse.currWeatherLong
+  // throw new Error()
+  return FakeResponse.currWeatherLong
   const url = BASE_URL + '/currentconditions/v1/' + locationKey + '?apikey=' + API_KEY + '&details=true'
   try {
     const res = await axios.get(url)
@@ -34,7 +35,7 @@ async function getLocationCurrentWeatherByKey(locationKey) {
 }
 
 async function getLocationweekForecastByKey(locationKey) {
-  // return await FakeResponse.weekForecast
+  return await FakeResponse.weekForecast
   const url = BASE_URL + '/forecasts/v1/daily/5day/' + locationKey + '?apikey=' + API_KEY + '&metric=true'
   try {
     const res = await axios.get(url)

@@ -1,6 +1,7 @@
 .suggests-list-cmp {
+  z-index: 1;
   background-color: #fff;
-  box-shadow: 0 0 4px 1px #c4c4c4;
+  box-shadow:0px 2px 4px 2px #94949478;
   max-height: 300px;
   overflow-y: scroll;
   border-bottom-left-radius: 9px;
@@ -16,9 +17,9 @@
     }
 
     .country {
-      color: rgb(151, 151, 151);
+      color: rgb(146, 146, 146);
       font-weight: 300;
-      margin-left: 25px;
+      margin-left: 3px;
       font-size: 14px;
     }
   }

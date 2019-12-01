@@ -1,13 +1,16 @@
 .toggle-heart-cmp {
-   cursor: pointer;
-   font-size: 24px;
-   color: #ccc;
+  font-size: 24px;
+  color: #ccc;
 
-   &.active {
-      color: tomato
-   }
+  i {
+    cursor: pointer;
+  }
 
-   &:hover {
-      color: rgba(255, 99, 71, 0.678);
-   }
+  &.active {
+    color: tomato;
+  }
+
+  &:hover {
+    color: rgba(255, 99, 71, 0.678);
+  }
 }

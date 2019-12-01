@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss'
 //store
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 //services
 import WeatherService from '../../../../services/WeatherService'
 
@@ -17,8 +17,12 @@ class LocationPreview extends Component {
 
    fetchCurrentWeather = async () => {
       const locationKey = this.props.location.Key
-      const currentWeather = await WeatherService.getLocationCurrentWeatherByKey(locationKey)
-      this.setState({ currentWeather })
+      try {
+         const currentWeather = await WeatherService.getLocationCurrentWeatherByKey(locationKey)
+         this.setState({ currentWeather })
+      }catch(err) {
+         console.log('error', err)
+      }
    }
 
    handleClick = () => {
@@ -27,9 +31,9 @@ class LocationPreview extends Component {
    }
 
    render() {
-      const { location , temperatureUnit} = this.props
+      const { location, temperatureUnit } = this.props
       const { currentWeather } = this.state
-     
+
       let weatherIconSrc, temperature
       if (currentWeather) { //FIX loading/error
          temperature = temperatureUnit === 'C' ?
