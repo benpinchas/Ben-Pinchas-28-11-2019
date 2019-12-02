@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Ben-Pinchas-28-11-2019/static/css/main.99123421.chunk.css",
-    "main.js": "/Ben-Pinchas-28-11-2019/static/js/main.98ed7ac2.chunk.js",
-    "main.js.map": "/Ben-Pinchas-28-11-2019/static/js/main.98ed7ac2.chunk.js.map",
+    "main.css": "/Ben-Pinchas-28-11-2019/static/css/main.ec4cc9b4.chunk.css",
+    "main.js": "/Ben-Pinchas-28-11-2019/static/js/main.81ff7fbc.chunk.js",
+    "main.js.map": "/Ben-Pinchas-28-11-2019/static/js/main.81ff7fbc.chunk.js.map",
     "runtime-main.js": "/Ben-Pinchas-28-11-2019/static/js/runtime-main.18418fcc.js",
     "runtime-main.js.map": "/Ben-Pinchas-28-11-2019/static/js/runtime-main.18418fcc.js.map",
-    "static/js/2.f61e7069.chunk.js": "/Ben-Pinchas-28-11-2019/static/js/2.f61e7069.chunk.js",
-    "static/js/2.f61e7069.chunk.js.map": "/Ben-Pinchas-28-11-2019/static/js/2.f61e7069.chunk.js.map",
+    "static/js/2.a1732661.chunk.js": "/Ben-Pinchas-28-11-2019/static/js/2.a1732661.chunk.js",
+    "static/js/2.a1732661.chunk.js.map": "/Ben-Pinchas-28-11-2019/static/js/2.a1732661.chunk.js.map",
     "index.html": "/Ben-Pinchas-28-11-2019/index.html",
-    "precache-manifest.25bba2a51d8339863ba9171e77fbbd75.js": "/Ben-Pinchas-28-11-2019/precache-manifest.25bba2a51d8339863ba9171e77fbbd75.js",
+    "precache-manifest.8c29dc6865a77950d71ed2187629e2d7.js": "/Ben-Pinchas-28-11-2019/precache-manifest.8c29dc6865a77950d71ed2187629e2d7.js",
     "service-worker.js": "/Ben-Pinchas-28-11-2019/service-worker.js",
-    "static/css/main.99123421.chunk.css.map": "/Ben-Pinchas-28-11-2019/static/css/main.99123421.chunk.css.map"
+    "static/css/main.ec4cc9b4.chunk.css.map": "/Ben-Pinchas-28-11-2019/static/css/main.ec4cc9b4.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.18418fcc.js",
-    "static/js/2.f61e7069.chunk.js",
-    "static/css/main.99123421.chunk.css",
-    "static/js/main.98ed7ac2.chunk.js"
+    "static/js/2.a1732661.chunk.js",
+    "static/css/main.ec4cc9b4.chunk.css",
+    "static/js/main.81ff7fbc.chunk.js"
   ]
 }
