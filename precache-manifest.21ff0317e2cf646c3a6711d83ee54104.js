@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "84d85d37fba070f5c13c740fa3af4630",
+    "revision": "8c35aa9922a205db56082acb2292e411",
     "url": "/Ben-Pinchas-28-11-2019/index.html"
   },
   {
