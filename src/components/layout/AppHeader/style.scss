@@ -13,13 +13,13 @@
   //----------
 
   .container {
-    padding: 13px 20px;
+    padding: 15px 20px;
   }
 
   .widget-container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 3px;
+    margin-bottom: 6px;
     font-size: 16px;
     @media (max-width: 670px) {
       font-size: 14px;

@@ -9,6 +9,8 @@ import ToggleHeart from '../../components/util/ToggleHeart/ToggleHeart';
 //services
 import WeatherService from '../../services/WeatherService'
 import UtilService from '../../services/UtilService'
+//swal
+import Swal from 'sweetalert2'
 
 class LocationDetails extends Component {
    state = {
@@ -37,15 +39,26 @@ class LocationDetails extends Component {
          this.setState({ currentWeather })
       } catch (err) {
          this.setState({ currentWeather: 'ERROR' })
+         Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "We couldn't get the current weather!",
+         })
       }
-
-
    }
 
    fetchWeekForecast = async () => {
       const locationKey = this.props.selectedLocation.Key
-      let weekForecast = await WeatherService.getLocationweekForecastByKey(locationKey)
-      this.setState({ weekForecast })
+      try {
+         let weekForecast = await WeatherService.getLocationweekForecastByKey(locationKey)
+         this.setState({ weekForecast })
+      } catch (err) {
+         Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "We couldn't get the weekly forcast!"
+         })
+      }
    }
 
    toggleLocationFromFavorites = () => {
@@ -75,9 +88,11 @@ class LocationDetails extends Component {
          weatherIconSrc = WeatherService.getWeatherIconSrc(currentWeather.WeatherIcon)
          hour = UtilService.getFormattedHour(currentWeather.LocalObservationDateTime)
          partOfDay = currentWeather.IsDayTime ? 'Day' : 'Night'
-         timeContainerClass = currentWeather.IsDayTime ? '' : 'night' 
+         timeContainerClass = currentWeather.IsDayTime ? '' : 'night'
          windSpeed = currentWeather.Wind.Speed.Metric.Value + 'Km/h'
       }
+
+
 
 
       return (
@@ -99,8 +114,8 @@ class LocationDetails extends Component {
             </div>
 
 
-            <div className="test-1">
-               <div className={"floating-card location-time-container " + timeContainerClass}>
+            <div className="time-wind-container">
+               <div className={"floating-card location-time-card " + timeContainerClass}>
                   {hour &&
                      <h3>{hour} | {partOfDay}</h3>
                   }

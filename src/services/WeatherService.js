@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as FakeResponse from './FakeResponse'
-import config from '../config'
+import config from '../config.js'
 
 const BASE_URL = 'https://dataservice.accuweather.com'
 const API_KEY = 'zsGlW5LWHSfncy9Loq7xgypCDO1ShYbS'
@@ -10,7 +10,8 @@ const API_KEY = 'zsGlW5LWHSfncy9Loq7xgypCDO1ShYbS'
 
 
 async function getLocationSuggests(queryString) {
-  return FakeResponse.locationSuggests
+  // throw new Error()
+  // return FakeResponse.locationSuggests
   const url = BASE_URL + '/locations/v1/cities/autocomplete?apikey=' + API_KEY + '&q=' + queryString
   try {
     const res = await axios.get(url)
@@ -23,7 +24,7 @@ async function getLocationSuggests(queryString) {
 
 async function getLocationCurrentWeatherByKey(locationKey) {
   // throw new Error()
-  return FakeResponse.currWeatherLong
+  // return FakeResponse.currWeatherLong
   const url = BASE_URL + '/currentconditions/v1/' + locationKey + '?apikey=' + API_KEY + '&details=true'
   try {
     const res = await axios.get(url)
@@ -35,7 +36,8 @@ async function getLocationCurrentWeatherByKey(locationKey) {
 }
 
 async function getLocationweekForecastByKey(locationKey) {
-  return await FakeResponse.weekForecast
+  // throw new Error()
+  // return await FakeResponse.weekForecast
   const url = BASE_URL + '/forecasts/v1/daily/5day/' + locationKey + '?apikey=' + API_KEY + '&metric=true'
   try {
     const res = await axios.get(url)
@@ -50,6 +52,7 @@ function convertCelsiusToFahrenheit(degrees) {
   return Math.floor(degrees * 1.8 + 32)
 }
 
+
 function getWeatherIconSrc(iconNumber) {
   const site_url = config.site_url
   const icon_folder_url = site_url + '/assets/weather-icons/'
@@ -60,7 +63,7 @@ function getWeatherIconSrc(iconNumber) {
     // strong sun , few clouds
     return icon_folder_url + 'sunny.svg'
   } else if (iconNumber >= 6 && iconNumber <= 8) {
-    // heavy clouds, little sun
+    // heavy clouds, weak sun 
     return icon_folder_url + 'cloudy.svg'
   } else if (iconNumber === 11) {
     //fog
@@ -72,7 +75,7 @@ function getWeatherIconSrc(iconNumber) {
     //snow
     return icon_folder_url + 'snow.svg'
   } else if (iconNumber >= 19 && iconNumber <= 23) {
-    //cloud
+    //clouds
     return icon_folder_url + 'clouds.svg'
   } else if (iconNumber >= 38 && iconNumber <= 42) {
     // storm

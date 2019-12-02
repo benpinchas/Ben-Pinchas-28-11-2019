@@ -20,7 +20,7 @@ function createFavorites() {
 
 function getFavoriteLocations() {
   let favorites = StorageService.load(FAVORITE_LOCATIONS_STORAGE_KEY)
-  if (!favorites) {
+  if (!favorites) { //the app launched for the first time, set initial places
     favorites = createFavorites()
     saveFavoriteLocations(favorites)
   }

@@ -4,11 +4,12 @@ import './style.scss'
 import { connect } from 'react-redux'
 //services
 import WeatherService from '../../../../services/WeatherService'
-
+//swal
+import Swal from 'sweetalert2'
 
 class LocationPreview extends Component {
    state = {
-      currentWeather: null
+      currentWeather: 'FETCHING'
    }
 
    componentDidMount() {
@@ -20,8 +21,13 @@ class LocationPreview extends Component {
       try {
          const currentWeather = await WeatherService.getLocationCurrentWeatherByKey(locationKey)
          this.setState({ currentWeather })
-      }catch(err) {
-         console.log('error', err)
+      } catch (err) {
+         this.setState({ currentWeather: 'ERROR' })
+         Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Something went wrong!",
+         })
       }
    }
 
@@ -35,7 +41,13 @@ class LocationPreview extends Component {
       const { currentWeather } = this.state
 
       let weatherIconSrc, temperature
-      if (currentWeather) { //FIX loading/error
+      if (currentWeather === 'FETCHING') {
+         weatherIconSrc = 'https://svgshare.com/i/GVB.svg' //loader
+         temperature = 'Loading..'
+      } else if (currentWeather == 'ERROR') {
+         weatherIconSrc = 'https://svgshare.com/i/GV2.svg' //error
+         temperature = '--'
+      } else {
          temperature = temperatureUnit === 'C' ?
             currentWeather.Temperature.Metric.Value + ' ° C' :
             currentWeather.Temperature.Imperial.Value + ' ° F'

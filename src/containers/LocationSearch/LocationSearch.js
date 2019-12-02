@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { setSelectedLocationAction, fetchLocationSuggestsAction } from '../../store/actions/locationActions'
 //cmps
 import SuggestionsList from './components/SuggestsList/SuggestsList';
+//swal
+import Swal from 'sweetalert2'
 
 class LocationSearch extends React.Component {
    state = {
@@ -31,7 +33,14 @@ class LocationSearch extends React.Component {
       this.setState(
          (state) => ({ ...state, term: term }),
          () => this.props.fetchLocationSuggests(term)
-            .catch((err) => alert('Please try later..'))
+            .catch((err) => {
+               this.setState({term: ''}) //clean the input
+               Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: "Something went wrong!",
+               })
+            })
       )
    }
 
