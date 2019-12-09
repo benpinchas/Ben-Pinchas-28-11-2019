@@ -42,7 +42,7 @@ class LocationPreview extends Component {
 
       let weatherIconSrc, temperature
       if (currentWeather === 'FETCHING') {
-         weatherIconSrc = 'https://svgshare.com/i/GVB.svg' //loader
+         weatherIconSrc = 'https://svgshare.com/i/GfN.svg' //loader
          temperature = 'Loading..'
       } else if (currentWeather == 'ERROR') {
          weatherIconSrc = 'https://svgshare.com/i/GV2.svg' //error

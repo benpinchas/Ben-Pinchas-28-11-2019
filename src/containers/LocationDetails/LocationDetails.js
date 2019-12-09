@@ -76,7 +76,7 @@ class LocationDetails extends Component {
       if (currentWeather === 'FETCHING') {
          temperature = 'Loading..'
          weatherText = 'Loading..'
-         weatherIconSrc = 'https://svgshare.com/i/GVB.svg'
+         weatherIconSrc = 'https://svgshare.com/i/GfN.svg'
       } else if (currentWeather === 'ERROR') {
          weatherIconSrc = 'https://svgshare.com/i/GV2.svg'
          weatherText = 'Please try later!'
