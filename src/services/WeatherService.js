@@ -3,7 +3,7 @@ import * as FakeResponse from './FakeResponse'
 import config from '../config.js'
 
 const BASE_URL = 'https://dataservice.accuweather.com'
-const API_KEY = 'zsGlW5LWHSfncy9Loq7xgypCDO1ShYbS'
+const API_KEY = 'nlHrBj3x0ff0f5uJ1hjANgFi9wGiHlWQ'
 
 
 
